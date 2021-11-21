@@ -33,7 +33,7 @@ def get_db():
         db.close()
 
 
-def get_raw_query_rs(query):
+def get_raw_query_qs(query):
     with engine.connect() as con:
         rs = con.execute(query)
         return rs
