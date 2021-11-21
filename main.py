@@ -1,22 +1,23 @@
-from typing import Optional
-
 from fastapi import FastAPI
+from starlette.responses import RedirectResponse
 
-from app.datatype import ScopeBoxParams
+from app.models.database import Base, engine
+from app.models.datatype import ScopeBoxParams
+
+from app.utils.scope_box import ScopeBox
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+    response = RedirectResponse(url='/docs')
+    return response
 
 
 @app.get("/query")
 def recommended_scope_box_data(params: ScopeBoxParams):
+    scope_box = ScopeBox(params)
     return {"msg": "done"}
