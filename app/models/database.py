@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from app.config.utils import ConfigUtils
+from app.config.config import ConfigUtils
 
 config_utils = ConfigUtils()
 db_user = config_utils.get_data('db_user')

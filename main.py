@@ -20,4 +20,5 @@ def read_root():
 @app.get("/query")
 def recommended_scope_box_data(params: ScopeBoxParams):
     scope_box = ScopeBox(params)
+    scope_box.get_global_offeset_of_3D_files
     return {"msg": "done"}
