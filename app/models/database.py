@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+from sqlalchemy.engine import LegacyCursorResult
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -25,6 +26,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
+
 def get_db():
     db = SessionLocal()
     try:
@@ -33,7 +35,7 @@ def get_db():
         db.close()
 
 
-def get_raw_query_qs(query):
+def get_raw_query_qs(query) -> LegacyCursorResult:
     with engine.connect() as con:
         rs = con.execute(query)
         return rs
