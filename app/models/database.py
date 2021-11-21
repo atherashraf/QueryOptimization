@@ -1,3 +1,5 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.engine import LegacyCursorResult
 from sqlalchemy.ext.declarative import declarative_base
@@ -6,11 +8,11 @@ from sqlalchemy.orm import sessionmaker
 from app.config.config import ConfigUtils
 
 config_utils = ConfigUtils()
-db_user = config_utils.get_data('db_user')
-db_password = config_utils.get_data('db_password')
-db_host = config_utils.get_data('db_host')
-db_port = config_utils.get_data('db_port')
-db_name = config_utils.get_data('db_name')
+db_user = os.getenv("db_user")  # or config_utils.get_data('db_user')
+db_password = os.getenv("db_password")  # or config_utils.get_data('db_password')
+db_host = os.getenv("db_host")  # or config_utils.get_data('db_host')
+db_port = os.getenv("db_port")  # or  config_utils.get_data('db_port')
+db_name = os.getenv("db_name")  # or config_utils.get_data('db_name')
 SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 print("db url", SQLALCHEMY_DATABASE_URL)
 
