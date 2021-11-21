@@ -12,8 +12,7 @@ class ScopeBox():
         query = "SELECT ROUND(CAST(tf.globaloffset->>'x' AS NUMERIC), 9)*(-1)," \
                 "ROUND(CAST(tf.globaloffset->>'y' AS NUMERIC), 9)*(-1)," \
                 "ROUND(CAST(tf.globaloffset->>'z' AS NUMERIC), 9)*(-1)" \
-            # "into globaloffset_x, globaloffset_y, globaloffset_z" \
-        "FROM tbl_files tf WHERE tf.pk_fileid = p_file_id AND fk_file_type_id = 1;"
+                "FROM tbl_files tf WHERE tf.pk_fileid = p_file_id AND fk_file_type_id = 1;"
         qs = get_raw_query_qs(query)
         for obj in qs:
             print(obj)
