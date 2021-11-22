@@ -1,0 +1,7 @@
+SELECT * FROM
+usp_get_recommended_scopebox_data(
+    "p_project_id" := 458,"p_scopebox_id" := 44564,
+    "p_file_id" := 1804,"p_regenerate_status" := TRUE)
+
+SELECT * FROM usp_get_recommended_scopebox_data("p_project_id" := 483,"p_scopebox_id" := 44974,"p_file_id" := 1847,
+"p_regenerate_status" := TRUE)
